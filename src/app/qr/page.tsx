@@ -9,15 +9,55 @@ export default function QRPage() {
   const [url] = useState("https://milyscakes.vercel.app/links");
 
   const downloadQR = () => {
-    const canvas = qrRef.current?.querySelector("canvas");
-    if (canvas) {
-      const image = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = "milyscakes-qr.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    const originalCanvas = qrRef.current?.querySelector("canvas");
+    if (originalCanvas) {
+      // Create a new canvas with extra padding for text
+      const newCanvas = document.createElement("canvas");
+      const ctx = newCanvas.getContext("2d");
+      
+      if (ctx) {
+        const padding = 60;
+        const topTextHeight = 60;
+        const bottomTextHeight = 60;
+        const width = originalCanvas.width + (padding * 2);
+        const height = originalCanvas.height + topTextHeight + bottomTextHeight + (padding * 1.5);
+        
+        newCanvas.width = width;
+        newCanvas.height = height;
+        
+        // Fill white background
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, width, height);
+        
+        // Draw Top Text
+        ctx.font = "bold 24px Arial";
+        ctx.fillStyle = "#333333";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("ESCANÉAME - REDES SOCIALES", width / 2, padding / 2 + 20);
+        
+        // Draw Original QR
+        ctx.drawImage(originalCanvas, padding, topTextHeight + padding / 2);
+        
+        // Draw Bottom Text
+        ctx.font = "14px Arial";
+        ctx.fillStyle = "#666666";
+        ctx.fillText("Creado por Spacecode Technologies", width / 2, height - bottomTextHeight + 10);
+        
+        // Draw WhatsApp Contact
+        ctx.font = "bold 16px Arial";
+        ctx.fillStyle = "#25D366"; // WhatsApp Green
+        ctx.fillText("📱 317 678 7316", width / 2, height - bottomTextHeight + 35);
+        
+        // Download
+        const image = newCanvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "milyscakes-qr-redes.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
     }
   };
 
