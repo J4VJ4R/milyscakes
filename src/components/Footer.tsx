@@ -60,12 +60,10 @@ export default function Footer() {
           {/* Horario */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold uppercase tracking-wider mb-6">Horario</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li className="flex justify-between w-48">
-                <span>Lunes - Domingo:</span>
-                <span className="text-white">9:00 AM - 10:00 PM</span>
-              </li>
-            </ul>
+            <div className="text-gray-400 flex flex-col items-center md:items-start gap-1">
+              <span>Lunes - Domingo</span>
+              <span className="text-white font-medium">9:00 AM - 10:00 PM</span>
+            </div>
           </div>
         </div>
 
