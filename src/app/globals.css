@@ -8,6 +8,10 @@
   --mily-purple-dark: #a66ec7;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -24,3 +28,91 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@keyframes neon-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.neon-border-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.neon-border-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 2px; /* Border width */
+  background: linear-gradient(90deg, transparent, #C996EB, #a66ec7, transparent);
+  background-size: 200% 100%;
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  animation: neon-flow 2s linear infinite;
+}
+
+.neon-border-btn:hover::before {
+  opacity: 1;
+}
+
+.neon-border-pill {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.neon-border-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 9999px; /* rounded-full */
+  padding: 2px; /* Border width */
+  background: linear-gradient(90deg, transparent, #C996EB, #a66ec7, transparent);
+  background-size: 200% 100%;
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 1; /* Always visible */
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  animation: neon-flow 2s linear infinite;
+}
+
+.neon-border-pill:hover::before {
+  opacity: 1;
+}
+
+/* Alternative simpler neon glow if mask doesn't work well in all contexts */
+.neon-glow:hover {
+  box-shadow: 0 0 5px #C996EB, 0 0 10px #C996EB, 0 0 20px #C996EB;
+  border-color: #C996EB;
+}
+

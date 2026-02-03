@@ -1,7 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import CategoryNav from "@/components/CategoryNav";
 import ProductSection from "@/components/ProductSection";
+import About from "@/components/About";
 import Footer from "@/components/Footer";
+import FloatingButtons from "@/components/FloatingButtons";
 import { menuData } from "@/data/menu";
 
 export default function Home() {
@@ -9,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <CategoryNav />
       
       {menuData.map((category, index) => (
         <ProductSection 
@@ -18,7 +22,9 @@ export default function Home() {
         />
       ))}
 
+      <About />
       <Footer />
+      <FloatingButtons />
     </main>
   );
 }

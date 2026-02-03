@@ -8,7 +8,7 @@ interface ProductSectionProps {
 
 export default function ProductSection({ category, reversed = false }: ProductSectionProps) {
   return (
-    <section id={category.id} className={`py-20 ${reversed ? "bg-gray-50" : "bg-white"}`}>
+    <section id={category.id} className={`py-20 scroll-mt-36 md:scroll-mt-40 ${reversed ? "bg-gray-50" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-dancing-script text-5xl md:text-6xl text-mily-purple mb-4">

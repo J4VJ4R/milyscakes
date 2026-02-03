@@ -12,14 +12,28 @@ export default function Footer() {
               Pastelería artesanal hecha con amor en Ibagué. Llevamos dulzura a tu mesa con los ingredientes más frescos y deliciosos.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-mily-purple transition-colors">
+              <a 
+                href="https://www.instagram.com/milyscakes27/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-800 p-2 rounded-full hover:bg-mily-purple transition-colors"
+                aria-label="Síguenos en Instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-mily-purple transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-mily-purple transition-colors">
-                <Send className="w-5 h-5" /> {/* TikTok placeholder icon */}
+              <a 
+                href="https://www.tiktok.com/@milyscakes0?lang=es-419" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-800 p-2 rounded-full hover:bg-mily-purple transition-colors"
+                aria-label="Síguenos en TikTok"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -38,7 +52,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Send className="w-5 h-5 text-mily-purple flex-shrink-0" />
-                <span>pedidos@milyscakes.com</span>
+                <span>milys.cakes27@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -48,19 +62,18 @@ export default function Footer() {
             <h3 className="text-lg font-bold uppercase tracking-wider mb-6">Horario</h3>
             <ul className="space-y-2 text-gray-400">
               <li className="flex justify-between w-48">
-                <span>Lunes - Sábado:</span>
-                <span className="text-white">9:00 AM - 8:00 PM</span>
-              </li>
-              <li className="flex justify-between w-48">
-                <span>Domingos:</span>
-                <span className="text-white">Cerrado</span>
+                <span>Lunes - Domingo:</span>
+                <span className="text-white">9:00 AM - 10:00 PM</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm flex flex-col gap-2">
           <p>&copy; {new Date().getFullYear()} Mily's Cakes. Todos los derechos reservados.</p>
+          <p>
+            Construido por <a href="https://www.spacecode.com.co" target="_blank" rel="noopener noreferrer" className="text-mily-purple hover:text-white transition-colors font-medium">Spacecode Technologies</a> - 3176787316
+          </p>
         </div>
       </div>
     </footer>

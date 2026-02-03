@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 
 export default function Navbar() {
@@ -24,10 +25,10 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="font-dancing-script text-3xl md:text-4xl text-mily-purple font-bold">
+            <Link href="/" className="font-dancing-script text-3xl md:text-4xl text-mily-purple font-bold flex flex-col items-start leading-none">
               Mily's Cakes
-              <span className="block text-xs font-sans text-gray-500 font-normal tracking-wider mt-1">
-                PASTELERÍA ARTESANAL
+              <span className="block text-xs font-sans text-gray-500 font-normal tracking-widest mt-1 uppercase">
+                Pastelería Artesanal
               </span>
             </Link>
           </div>
@@ -38,8 +39,12 @@ export default function Navbar() {
               Inicio
             </Link>
 
+            <Link href="#historia" className="text-gray-700 hover:text-mily-purple transition-colors font-medium">
+              Historia
+            </Link>
+
             <div className="relative group">
-              <button className="flex items-center text-gray-700 hover:text-mily-purple transition-colors font-medium">
+              <button className="flex items-center text-gray-700 hover:text-mily-purple transition-colors font-medium px-3 py-2 rounded-md neon-border-btn">
                 Menú <ChevronDown className="ml-1 w-4 h-4" />
               </button>
               {/* Dropdown */}
@@ -92,6 +97,14 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             >
               Inicio
+            </Link>
+
+            <Link
+              href="#historia"
+              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mily-purple hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Historia
             </Link>
             
             <div>
