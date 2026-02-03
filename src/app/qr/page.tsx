@@ -16,11 +16,12 @@ export default function QRPage() {
       const ctx = newCanvas.getContext("2d");
       
       if (ctx) {
-        const padding = 60;
-        const topTextHeight = 60;
-        const bottomTextHeight = 60;
+        const padding = 40; // Reduced horizontal padding since text is smaller
+        const topSectionHeight = 80; // Space for 2 lines at top
+        const bottomSectionHeight = 80; // Space for 2 lines at bottom
+        
         const width = originalCanvas.width + (padding * 2);
-        const height = originalCanvas.height + topTextHeight + bottomTextHeight + (padding * 1.5);
+        const height = originalCanvas.height + topSectionHeight + bottomSectionHeight;
         
         newCanvas.width = width;
         newCanvas.height = height;
@@ -29,25 +30,34 @@ export default function QRPage() {
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, width, height);
         
-        // Draw Top Text
-        ctx.font = "bold 24px Arial";
-        ctx.fillStyle = "#333333";
+        // Draw Top Text (2 lines)
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("ESCANÉAME - REDES SOCIALES", width / 2, padding / 2 + 20);
+        
+        // Line 1: ESCANÉAME
+        ctx.font = "bold 13px Arial";
+        ctx.fillStyle = "#333333";
+        ctx.fillText("ESCANÉAME", width / 2, 30);
+        
+        // Line 2: REDES SOCIALES
+        ctx.font = "bold 13px Arial";
+        ctx.fillText("REDES SOCIALES", width / 2, 50);
         
         // Draw Original QR
-        ctx.drawImage(originalCanvas, padding, topTextHeight + padding / 2);
+        ctx.drawImage(originalCanvas, padding, topSectionHeight);
         
-        // Draw Bottom Text
-        ctx.font = "14px Arial";
+        // Draw Bottom Text (2 lines)
+        const bottomStart = height - bottomSectionHeight + 20;
+        
+        // Line 1: Created by
+        ctx.font = "12px Arial";
         ctx.fillStyle = "#666666";
-        ctx.fillText("Creado por Spacecode Technologies", width / 2, height - bottomTextHeight + 10);
+        ctx.fillText("Creado por Spacecode Technologies", width / 2, bottomStart);
         
-        // Draw WhatsApp Contact
-        ctx.font = "bold 16px Arial";
+        // Line 2: WhatsApp
+        ctx.font = "bold 13px Arial";
         ctx.fillStyle = "#25D366"; // WhatsApp Green
-        ctx.fillText("📱 317 678 7316", width / 2, height - bottomTextHeight + 35);
+        ctx.fillText("📱 317 678 7316", width / 2, bottomStart + 20);
         
         // Download
         const image = newCanvas.toDataURL("image/png");
