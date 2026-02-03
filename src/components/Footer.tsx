@@ -72,7 +72,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm flex flex-col gap-2">
           <p>&copy; {new Date().getFullYear()} Mily's Cakes. Todos los derechos reservados.</p>
           <p>
-            Construido por <a href="https://www.spacecode.com.co" target="_blank" rel="noopener noreferrer" className="text-mily-purple hover:text-white transition-colors font-medium">Spacecode Technologies</a> - 3176787316
+            Creado por <a href="https://www.spacecode.com.co" target="_blank" rel="noopener noreferrer" className="text-mily-purple hover:text-white transition-colors font-medium">Spacecode Technologies</a> - 317 678 7316
           </p>
         </div>
       </div>
