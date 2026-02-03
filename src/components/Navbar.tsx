@@ -65,6 +65,10 @@ export default function Navbar() {
               Contacto
             </Link>
 
+            <Link href="/links" className="text-gray-700 hover:text-mily-purple transition-colors font-medium">
+              Redes
+            </Link>
+
             <a
               href="https://wa.me/573134583730"
               target="_blank"
@@ -136,6 +140,14 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             >
               Contacto
+            </Link>
+
+            <Link
+              href="/links"
+              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mily-purple hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Redes
             </Link>
 
             <a
