@@ -68,7 +68,7 @@ body {
      linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease;
   pointer-events: none;
   animation: neon-flow 2s linear infinite;
