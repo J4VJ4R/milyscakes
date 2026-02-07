@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   price: string;
   image: string;
+  images?: string[];
   description?: string;
 }
 
@@ -72,6 +73,13 @@ export const menuData: Category[] = [
         price: "$9.000",
         image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=800",
         description: "Jugosa y dulce, bañada en nuestra mezcla especial de tres leches.",
+      },
+      {
+        id: "t-9",
+        name: "Torta de Café",
+        price: "Consultar",
+        image: "/img/tortas/torta-cafe.png",
+        description: "Torta de cafe con nueces de brasil caramelizadas rellena de arequipe y crema de cafe.",
       },
     ],
   },
@@ -151,6 +159,16 @@ export const menuData: Category[] = [
         name: "Parfait",
         price: "Consultar",
         image: "https://images.unsplash.com/photo-1488477181946-6428a029177b?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        id: "s-7",
+        name: "Pastel de Carne",
+        price: "$3.000",
+        image: "/img/salydulce/pastelcarne/pastel-de-carne-.webp",
+        images: [
+          "/img/salydulce/pastelcarne/pastel-de-carne-.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-bebida.webp"
+        ],
       },
     ],
   },
