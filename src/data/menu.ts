@@ -250,9 +250,16 @@ export const menuData: Category[] = [
       },
       {
         id: "b-6",
-        name: "Limonada",
+        name: "Limonada de Coco",
         price: "Consultar",
-        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800",
+        image: "/img/bebidas/limonada-coco/limonada-coco-1.webp",
+        images: [
+          "/img/bebidas/limonada-coco/limonada-coco-1.webp",
+          "/img/bebidas/limonada-coco/limonada-coco-2.webp",
+          "/img/bebidas/limonada-coco/limonada-coco-3.webp",
+          "/img/bebidas/limonada-coco/limona-coco-4.webp",
+          "/img/bebidas/limonada-coco/limonada-coco-5.webp"
+        ],
       },
     ],
   },
