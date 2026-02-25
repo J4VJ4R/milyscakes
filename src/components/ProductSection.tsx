@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { MessageCircle } from "lucide-react";
 import { Category, Product } from "@/data/menu";
 
 interface ProductSectionProps {
@@ -9,7 +10,7 @@ interface ProductSectionProps {
   reversed?: boolean;
 }
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product, categoryId }: { product: Product; categoryId: string }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -112,9 +113,23 @@ const ProductCard = ({ product }: { product: Product }) => {
       </h3>
       <p className="text-mily-purple-dark font-semibold mb-3">{product.price}</p>
       {product.description && (
-        <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+        <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-4">
           {product.description}
         </p>
+      )}
+
+      {categoryId === "tortas" && (
+        <a
+          href={`https://wa.me/573134583730?text=${encodeURIComponent(
+            `Quiero cotizar la torta ${product.name}, me brinda más información?`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg mt-auto"
+        >
+          <MessageCircle className="w-4 h-4" />
+          <span>Cotizar en WhatsApp</span>
+        </a>
       )}
     </div>
   );
@@ -133,7 +148,7 @@ export default function ProductSection({ category, reversed = false }: ProductSe
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {category.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} categoryId={category.id} />
           ))}
         </div>
       </div>
