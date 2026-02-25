@@ -261,6 +261,16 @@ export const menuData: Category[] = [
           "/img/bebidas/limonada-coco/limonada-coco-5.webp"
         ],
       },
+      {
+        id: "b-8",
+        name: "Limonada Cerezada",
+        price: "Consultar",
+        image: "/img/bebidas/limonada-cerezada/limonada-cerezada-1.webp",
+        images: [
+          "/img/bebidas/limonada-cerezada/limonada-cerezada-1.webp",
+          "/img/bebidas/limonada-cerezada/limonada-cerezada-2.webp"
+        ],
+      },
     ],
   },
 ];
