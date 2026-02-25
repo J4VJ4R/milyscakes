@@ -225,6 +225,18 @@ export const menuData: Category[] = [
         ],
       },
       {
+        id: "b-7",
+        name: "Chocolate",
+        price: "Consultar",
+        image: "/img/bebidas/chocolate/chocolate1.webp",
+        images: [
+          "/img/bebidas/chocolate/chocolate1.webp",
+          "/img/bebidas/chocolate/chocolate2.webp",
+          "/img/bebidas/chocolate/chocolate3.webp",
+          "/img/bebidas/chocolate/chocolate4.webp"
+        ],
+      },
+      {
         id: "b-4",
         name: "Frappe Café",
         price: "Consultar",
