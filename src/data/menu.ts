@@ -203,7 +203,14 @@ export const menuData: Category[] = [
         id: "b-2",
         name: "Capuchino",
         price: "Consultar",
-        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=80&w=800",
+        image: "/img/bebidas/capuchino/capuchino.webp",
+        images: [
+          "/img/bebidas/capuchino/capuchino.webp",
+          "/img/bebidas/capuchino/capuchino2.webp",
+          "/img/bebidas/capuchino/capuchino3.webp",
+          "/img/bebidas/capuchino/capuchino4.webp",
+          "/img/bebidas/capuchino/capuchino5.webp"
+        ],
       },
       {
         id: "b-3",
