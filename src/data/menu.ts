@@ -207,9 +207,15 @@ export const menuData: Category[] = [
       },
       {
         id: "b-3",
-        name: "Mocca",
+        name: "Campesino",
         price: "Consultar",
-        image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=800",
+        image: "/img/bebidas/campesino/campesino-1.webp",
+        images: [
+          "/img/bebidas/campesino/campesino-1.webp",
+          "/img/bebidas/campesino/campesino2.webp",
+          "/img/bebidas/campesino/campesino3.webp",
+          "/img/bebidas/campesino/campesino4.webp"
+        ],
       },
       {
         id: "b-4",
