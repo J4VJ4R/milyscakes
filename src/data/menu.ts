@@ -174,7 +174,13 @@ export const menuData: Category[] = [
         image: "/img/salydulce/pastelcarne/pastel-de-carne-.webp",
         images: [
           "/img/salydulce/pastelcarne/pastel-de-carne-.webp",
-          "/img/salydulce/pastelcarne/pastel-carne-bebida.webp"
+          "/img/salydulce/pastelcarne/pastel-carne-bebida.webp",
+          "/img/salydulce/pastelcarne/pastel-carn-bebida.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-2.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-3.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-4.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-5.webp",
+          "/img/salydulce/pastelcarne/pastel-carne-bebida-2.webp"
         ],
       },
     ],
