@@ -193,7 +193,11 @@ export const menuData: Category[] = [
         id: "b-1",
         name: "Americano",
         price: "Consultar",
-        image: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&q=80&w=800",
+        image: "/img/bebidas/americano/americano-1.webp",
+        images: [
+            "/img/bebidas/americano/americano-1.webp",
+            "/img/bebidas/americano/americano-2.webp"
+        ],
       },
       {
         id: "b-2",
