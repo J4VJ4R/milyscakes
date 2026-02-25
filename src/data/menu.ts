@@ -244,9 +244,16 @@ export const menuData: Category[] = [
       },
       {
         id: "b-5",
-        name: "Malteadas",
+        name: "Malteada Frutos Rojos",
         price: "Consultar",
-        image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800",
+        image: "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos.webp",
+        images: [
+          "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos.webp",
+          "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos-1.webp",
+          "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos-2.webp",
+          "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos-3.webp",
+          "/img/bebidas/malteada-frutos-rojos/malteada-frutos-rojos-4.webp"
+        ],
       },
       {
         id: "b-6",
