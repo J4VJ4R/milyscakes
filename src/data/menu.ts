@@ -90,6 +90,17 @@ export const menuData: Category[] = [
         ],
         description: "Intenso chocolate para los verdaderos amantes del chocolate.",
       },
+      {
+        id: "t-7",
+        name: "Torta Infantil 1",
+        price: "Consultar",
+        image: "/img/tortas/torta-infantil-1/torta-infantil-1.webp",
+        images: [
+          "/img/tortas/torta-infantil-1/torta-infantil-1.webp",
+          "/img/tortas/torta-infantil-1/torta-infantil-2.webp"
+        ],
+        description: "Hermosa torta temática infantil, perfecta para celebrar.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
