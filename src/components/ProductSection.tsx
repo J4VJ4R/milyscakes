@@ -62,6 +62,19 @@ const ProductCard = ({ product, categoryId }: { product: Product; categoryId: st
 
   const imagesToRender = hasMultipleImages ? product.images! : [product.image];
 
+  const [origin, setOrigin] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
+  }, []);
+
+  const handleWhatsAppClick = () => {
+    const currentImage = hasMultipleImages ? product.images![currentImageIndex] : product.image;
+    console.log(`[WhatsApp Tracking] Product: ${product.name}, Image sent: ${currentImage}`);
+  };
+
   return (
     <div className="group flex flex-col items-center text-center">
       <div 
@@ -121,10 +134,11 @@ const ProductCard = ({ product, categoryId }: { product: Product; categoryId: st
       {categoryId === "tortas" && (
         <a
           href={`https://wa.me/573134583730?text=${encodeURIComponent(
-            `Quiero cotizar la torta ${product.name}, me brinda más información?`
+            `Hola, quiero cotizar la torta ${product.name}.\n\nPuede ver la referencia aquí: ${origin}${hasMultipleImages ? product.images![currentImageIndex] : product.image}`
           )}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleWhatsAppClick}
           className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg mt-auto"
         >
           <MessageCircle className="w-4 h-4" />
