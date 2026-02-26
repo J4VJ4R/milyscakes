@@ -79,6 +79,17 @@ export const menuData: Category[] = [
         ],
         description: "Deliciosa torta tradicional con el auténtico sabor a almojábana.",
       },
+      {
+        id: "t-6",
+        name: "Torta de Chocolate",
+        price: "Consultar",
+        image: "/img/tortas/torta-chocolate/t-chocolate-1.webp",
+        images: [
+          "/img/tortas/torta-chocolate/t-chocolate-1.webp",
+          "/img/tortas/torta-chocolate/torta-chocolate-2.webp"
+        ],
+        description: "Intenso chocolate para los verdaderos amantes del chocolate.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
