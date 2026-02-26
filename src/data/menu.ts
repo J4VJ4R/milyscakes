@@ -114,13 +114,13 @@ export const menuData: Category[] = [
       },
       {
         id: "t-9",
-        name: "Torta Personalizada",
+        name: "Torta Personalizada # 1",
         price: "Consultar",
-        image: "/img/tortas/torta-personalizada-2/torta-perzonalizada-1.webp",
+        image: "/img/tortas/torta-personalizada-1/torta-perzonalizada-1.webp",
         images: [
-          "/img/tortas/torta-personalizada-2/torta-perzonalizada-1.webp",
-          "/img/tortas/torta-personalizada-2/torta-perzonalizada-4.webp",
-          "/img/tortas/torta-personalizada-2/torta-perzonalizada-5.webp"
+          "/img/tortas/torta-personalizada-1/torta-perzonalizada-1.webp",
+          "/img/tortas/torta-personalizada-1/torta-perzonalizada-4.webp",
+          "/img/tortas/torta-personalizada-1/torta-perzonalizada-5.webp"
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
