@@ -42,6 +42,19 @@ export const menuData: Category[] = [
         ],
         description: "Exquisita torta con el auténtico sabor a chocolate Milky Way.",
       },
+      {
+        id: "t-3",
+        name: "Minitorta Arequipe",
+        price: "Consultar",
+        image: "/img/tortas/mini-torta-arequipe/mini-torta-1.webp",
+        images: [
+          "/img/tortas/mini-torta-arequipe/mini-torta-1.webp",
+          "/img/tortas/mini-torta-arequipe/mini-torta-2.webp",
+          "/img/tortas/mini-torta-arequipe/mini-torta-3.webp",
+          "/img/tortas/mini-torta-arequipe/mini-torta-4.webp"
+        ],
+        description: "Deliciosa minitorta con suave bizcocho y generosa cubierta de arequipe.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
