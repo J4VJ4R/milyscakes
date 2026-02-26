@@ -101,6 +101,17 @@ export const menuData: Category[] = [
         ],
         description: "Hermosa torta temática infantil, perfecta para celebrar.",
       },
+      {
+        id: "t-8",
+        name: "Torta de Café",
+        price: "Consultar",
+        image: "/img/tortas/torta-cafe/torta-cafe_1.webp",
+        images: [
+          "/img/tortas/torta-cafe/torta-cafe_1.webp",
+          "/img/tortas/torta-cafe/torta-cafe.webp"
+        ],
+        description: "Delicia de café y nueces del Brasil: Relleno cremoso de café y arequipe en un bizcocho húmedo, decorado con nueces caramelizadas a mano.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
