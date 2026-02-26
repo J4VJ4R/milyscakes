@@ -67,6 +67,18 @@ export const menuData: Category[] = [
         ],
         description: "Esponjosa torta roja con suave frosting de queso crema.",
       },
+      {
+        id: "t-5",
+        name: "Torta Almojábana",
+        price: "Consultar",
+        image: "/img/tortas/torta-almojabana/t-almojabana-1.webp",
+        images: [
+          "/img/tortas/torta-almojabana/t-almojabana-1.webp",
+          "/img/tortas/torta-almojabana/t-almojabana-2.webp",
+          "/img/tortas/torta-almojabana/t-almojabana-3.webp"
+        ],
+        description: "Deliciosa torta tradicional con el auténtico sabor a almojábana.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
