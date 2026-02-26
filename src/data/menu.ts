@@ -30,6 +30,18 @@ export const menuData: Category[] = [
         ],
         description: "Clásica torta suave rellena de arequipe o mermelada.",
       },
+      {
+        id: "t-2",
+        name: "Milky Way",
+        price: "Consultar",
+        image: "/img/tortas/milky-way/milkyway-1.webp",
+        images: [
+          "/img/tortas/milky-way/milkyway-1.webp",
+          "/img/tortas/milky-way/milkyway2.webp",
+          "/img/tortas/milky-way/milkyway3.webp"
+        ],
+        description: "Exquisita torta con el auténtico sabor a chocolate Milky Way.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
