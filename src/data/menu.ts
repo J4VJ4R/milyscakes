@@ -112,6 +112,18 @@ export const menuData: Category[] = [
         ],
         description: "Delicia de café y nueces del Brasil: Relleno cremoso de café y arequipe en un bizcocho húmedo, decorado con nueces caramelizadas a mano.",
       },
+      {
+        id: "t-9",
+        name: "Torta Personalizada",
+        price: "Consultar",
+        image: "/img/tortas/torta-personalizada-2/torta-perzonalizada-1.webp",
+        images: [
+          "/img/tortas/torta-personalizada-2/torta-perzonalizada-1.webp",
+          "/img/tortas/torta-personalizada-2/torta-perzonalizada-4.webp",
+          "/img/tortas/torta-personalizada-2/torta-perzonalizada-5.webp"
+        ],
+        description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
