@@ -55,6 +55,18 @@ export const menuData: Category[] = [
         ],
         description: "Deliciosa minitorta con suave bizcocho y generosa cubierta de arequipe.",
       },
+      {
+        id: "t-4",
+        name: "Minitorta Red Velvet",
+        price: "Consultar",
+        image: "/img/tortas/mini-torta-red-velvet/mini-torta-5.webp",
+        images: [
+          "/img/tortas/mini-torta-red-velvet/mini-torta-5.webp",
+          "/img/tortas/mini-torta-red-velvet/mini-torta-7.webp",
+          "/img/tortas/mini-torta-red-velvet/mini-torta-8.webp"
+        ],
+        description: "Esponjosa torta roja con suave frosting de queso crema.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
