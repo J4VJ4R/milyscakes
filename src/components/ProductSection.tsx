@@ -124,7 +124,9 @@ const ProductCard = ({ product, categoryId }: { product: Product; categoryId: st
       <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-mily-purple transition-colors">
         {product.name}
       </h3>
-      <p className="text-mily-purple-dark font-semibold mb-3">{product.price}</p>
+      {product.price !== "Consultar" && (
+        <p className="text-mily-purple-dark font-semibold mb-3">{product.price}</p>
+      )}
       {product.description && (
         <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-4">
           {product.description}
