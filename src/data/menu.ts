@@ -125,7 +125,7 @@ export const menuData: Category[] = [
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
       {
-        id: "t-10",
+        id: "t-11",
         name: "Torta Personalizada # 2",
         price: "Consultar",
         image: "/img/tortas/torta-personalizada-2/torta-perzonalizada-2.webp",
