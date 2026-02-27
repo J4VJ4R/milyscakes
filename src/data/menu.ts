@@ -311,6 +311,18 @@ export const menuData: Category[] = [
         ],
         description: "Torta cremosa de yogurt griego con arándanos frescos y aroma de naranja.",
       },
+      {
+        id: "t-22",
+        name: "Torta Tres Leches",
+        price: "Consultar",
+        image: "/img/tortas/torta-tres-leches/tres-leches-1.webp",
+        images: [
+          "/img/tortas/torta-tres-leches/tres-leches-1.webp",
+          "/img/tortas/torta-tres-leches/tres-leches-2.webp",
+          "/img/tortas/torta-tres-leches/tres-leches-3.webp"
+        ],
+        description: "Jugosa y dulce, bañada en nuestra mezcla especial de tres leches.",
+      },
     ],
   },
   {
