@@ -37,6 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Mily's Cakes" }],
   creator: "Mily's Cakes",
   publisher: "Mily's Cakes",
+  metadataBase: new URL("https://milyscakes.vercel.app"),
   formatDetection: {
     email: false,
     address: false,
@@ -45,11 +46,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MilysCakes | Pastelería Artesanal en Ibagué",
     description: "Dulces que cuentan historias. Pide tus tortas y postres favoritos a domicilio en Ibagué.",
-    url: "https://milyscakes.com",
+    url: "https://milyscakes.vercel.app",
     siteName: "Mily's Cakes",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=1000",
+        url: "/img/logo-horizontal-1.png",
         width: 1200,
         height: 630,
         alt: "Mily's Cakes - Pastelería Artesanal",
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MilysCakes | Pastelería Artesanal en Ibagué",
     description: "Dulces que cuentan historias. Pide tus tortas y postres favoritos a domicilio en Ibagué.",
-    images: ["https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=1000"],
+    images: ["/img/logo-horizontal-1.png"],
   },
   robots: {
     index: true,
@@ -90,11 +91,10 @@ export default function RootLayout({
     "@type": "Bakery",
     "name": "Mily's Cakes",
     "image": [
-      "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1519340333755-56e9c1d04579?auto=format&fit=crop&q=80&w=1000"
+      "https://milyscakes.vercel.app/img/logo-horizontal-1.png"
     ],
     "description": "Pastelería artesanal en Ibagué ofreciendo tortas, postres, bebidas calientes y frías. Especialidad en Red Velvet y Cheesecake.",
-    "url": "https://milyscakes.com",
+    "url": "https://milyscakes.vercel.app",
     "telephone": "+573134583730",
     "servesCuisine": "Pastelería, Repostería, Cafetería",
     "address": {
