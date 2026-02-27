@@ -231,6 +231,17 @@ export const menuData: Category[] = [
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
+      {
+        id: "t-21",
+        name: "Torta Personalizada # 12",
+        price: "Consultar",
+        image: "/img/tortas/torta-personalizada-12/torta-rv.webp",
+        images: [
+          "/img/tortas/torta-personalizada-12/torta-rv.webp",
+          "/img/tortas/torta-personalizada-12/torta-rv-2.webp"
+        ],
+        description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
+      },
       // {
       //   id: "t-2",
       //   name: "Amapola",
