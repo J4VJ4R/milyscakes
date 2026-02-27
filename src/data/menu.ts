@@ -327,12 +327,12 @@ export const menuData: Category[] = [
         id: "t-23",
         name: "Torta Personalizada # 13",
         price: "Consultar",
-        image: "/img/tortas/torta-personalizada-13/torta1.webp",
+        image: "/img/tortas/torta-personalizada-13/t-13-1.webp",
         images: [
-          "/img/tortas/torta-personalizada-13/torta1.webp",
-          "/img/tortas/torta-personalizada-13/torta2.webp",
-          "/img/tortas/torta-personalizada-13/torta3.webp",
-          "/img/tortas/torta-personalizada-13/torta4.webp"
+          "/img/tortas/torta-personalizada-13/t-13-1.webp",
+          "/img/tortas/torta-personalizada-13/t-13-2.webp",
+          "/img/tortas/torta-personalizada-13/t-13-3.webp",
+          "/img/tortas/torta-personalizada-13/t-13-4.webp"
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
