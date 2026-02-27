@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     siteName: "Mily's Cakes",
     images: [
       {
-        url: "/img/logo-horizontal-1.png",
-        width: 1200,
-        height: 630,
+        url: "/img/favicon.ico",
+        width: 256,
+        height: 256,
         alt: "Mily's Cakes - Pastelería Artesanal",
       },
     ],
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MilysCakes | Pastelería Artesanal en Ibagué",
     description: "Dulces que cuentan historias. Pide tus tortas y postres favoritos a domicilio en Ibagué.",
-    images: ["/img/logo-horizontal-1.png"],
+    images: ["/img/favicon.ico"],
   },
   robots: {
     index: true,
@@ -91,7 +91,7 @@ export default function RootLayout({
     "@type": "Bakery",
     "name": "Mily's Cakes",
     "image": [
-      "https://milyscakes.vercel.app/img/logo-horizontal-1.png"
+      "https://milyscakes.vercel.app/img/favicon.ico"
     ],
     "description": "Pastelería artesanal en Ibagué ofreciendo tortas, postres, bebidas calientes y frías. Especialidad en Red Velvet y Cheesecake.",
     "url": "https://milyscakes.vercel.app",
