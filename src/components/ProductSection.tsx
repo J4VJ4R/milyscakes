@@ -134,18 +134,23 @@ const ProductCard = ({ product, categoryId }: { product: Product; categoryId: st
       )}
 
       {categoryId === "tortas" && (
-        <a
-          href={`https://wa.me/573134583730?text=${encodeURIComponent(
-            `Hola, quiero cotizar la torta ${product.name}.\n\nPuede ver la referencia aquí: ${origin}${hasMultipleImages ? product.images![currentImageIndex] : product.image}`
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleWhatsAppClick}
-          className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg mt-auto"
-        >
-          <MessageCircle className="w-4 h-4" />
-          <span>Cotizar en WhatsApp</span>
-        </a>
+        <div className="mt-auto flex flex-col items-center gap-2">
+          <a
+            href={`https://wa.me/573134583730?text=${encodeURIComponent(
+              `Hola, quiero cotizar la torta ${product.name}.\n\nPuede ver la referencia aquí: ${origin}${hasMultipleImages ? product.images![currentImageIndex] : product.image}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleWhatsAppClick}
+            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>Cotizar Torta Completa</span>
+          </a>
+          <span className="text-xs text-gray-500 italic">
+            * Preguntar disponibilidad
+          </span>
+        </div>
       )}
     </div>
   );

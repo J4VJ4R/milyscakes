@@ -21,7 +21,7 @@ export const menuData: Category[] = [
       {
         id: "t-1",
         name: "María Luisa",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/maria-luisa/marialuisa-1.webp",
         images: [
           "/img/tortas/maria-luisa/marialuisa-1.webp",
@@ -33,7 +33,7 @@ export const menuData: Category[] = [
       {
         id: "t-2",
         name: "Milky Way",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/milky-way/milkyway-1.webp",
         images: [
           "/img/tortas/milky-way/milkyway-1.webp",
@@ -70,7 +70,7 @@ export const menuData: Category[] = [
       {
         id: "t-5",
         name: "Torta Almojábana",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/torta-almojabana/t-almojabana-1.webp",
         images: [
           "/img/tortas/torta-almojabana/t-almojabana-1.webp",
@@ -82,7 +82,7 @@ export const menuData: Category[] = [
       {
         id: "t-6",
         name: "Torta de Chocolate",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/torta-chocolate/t-chocolate-1.webp",
         images: [
           "/img/tortas/torta-chocolate/t-chocolate-1.webp",
@@ -104,7 +104,7 @@ export const menuData: Category[] = [
       {
         id: "t-8",
         name: "Torta de Café",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/torta-cafe/torta-cafe_1.webp",
         images: [
           "/img/tortas/torta-cafe/torta-cafe_1.webp",
@@ -301,7 +301,7 @@ export const menuData: Category[] = [
       {
         id: "t-10",
         name: "Torta de Yogurt",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/torta-yogurt/torta-de-yogurt.webp",
         images: [
           "/img/tortas/torta-yogurt/torta-de-yogurt.webp",
@@ -314,7 +314,7 @@ export const menuData: Category[] = [
       {
         id: "t-22",
         name: "Torta Tres Leches",
-        price: "Consultar",
+        price: "Porción $9.000",
         image: "/img/tortas/torta-tres-leches/tres-leches-1.webp",
         images: [
           "/img/tortas/torta-tres-leches/tres-leches-1.webp",
