@@ -332,7 +332,7 @@ export const menuData: Category[] = [
       {
         id: "p-1",
         name: "Cheesecake Frutos Rojos",
-        price: "Consultar",
+        price: "$7.000",
         image: "/img/postres/chesscake-frutos-rojos/chesscake-frutos-rojos.webp",
         images: [
           "/img/postres/chesscake-frutos-rojos/chesscake-frutos-rojos.webp"
