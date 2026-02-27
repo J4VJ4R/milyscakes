@@ -183,9 +183,9 @@ export const menuData: Category[] = [
         id: "t-16",
         name: "Torta Personalizada # 7",
         price: "Consultar",
-        image: "/img/tortas/torta-personalizada-7/torta-de-yogurt.webp",
+        image: "/img/tortas/torta-personalizada-7/torta-perzonalizada-16.webp",
         images: [
-          "/img/tortas/torta-personalizada-7/torta-de-yogurt.webp"
+          "/img/tortas/torta-personalizada-7/torta-perzonalizada-16.webp"
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
