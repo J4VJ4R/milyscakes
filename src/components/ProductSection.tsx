@@ -137,7 +137,7 @@ const ProductCard = ({ product, categoryId }: { product: Product; categoryId: st
         <div className="mt-auto flex flex-col items-center gap-2">
           <a
             href={`https://wa.me/573134583730?text=${encodeURIComponent(
-              `Hola, quiero cotizar ${product.name}.\n\nVer referencia:\n${origin}${hasMultipleImages ? product.images![currentImageIndex] : product.image}`
+              `Hola, cotizar ${product.name}\n${origin}${hasMultipleImages ? product.images![currentImageIndex] : product.image}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
