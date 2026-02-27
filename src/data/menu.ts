@@ -302,7 +302,13 @@ export const menuData: Category[] = [
         id: "t-10",
         name: "Torta de Yogurt",
         price: "Consultar",
-        image: "/img/tortas/torta-de-yogurt.webp",
+        image: "/img/tortas/torta-yogurt/torta-de-yogurt.webp",
+        images: [
+          "/img/tortas/torta-yogurt/torta-de-yogurt.webp",
+          "/img/tortas/torta-yogurt/torta-yogurt.webp",
+          "/img/tortas/torta-yogurt/yogurt-1.webp",
+          "/img/tortas/torta-yogurt/yogurt-2.webp"
+        ],
         description: "Torta cremosa de yogurt griego con arándanos frescos y aroma de naranja.",
       },
     ],
