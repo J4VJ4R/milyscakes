@@ -323,6 +323,19 @@ export const menuData: Category[] = [
         ],
         description: "Jugosa y dulce, bañada en nuestra mezcla especial de tres leches.",
       },
+      {
+        id: "t-23",
+        name: "Torta Personalizada # 13",
+        price: "Consultar",
+        image: "/img/tortas/torta-personalizada-13/torta1.webp",
+        images: [
+          "/img/tortas/torta-personalizada-13/torta1.webp",
+          "/img/tortas/torta-personalizada-13/torta2.webp",
+          "/img/tortas/torta-personalizada-13/torta3.webp",
+          "/img/tortas/torta-personalizada-13/torta4.webp"
+        ],
+        description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
+      },
     ],
   },
   {
