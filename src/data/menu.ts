@@ -329,6 +329,16 @@ export const menuData: Category[] = [
     id: "postres",
     title: "Postres",
     products: [
+      {
+        id: "p-1",
+        name: "Cheesecake Frutos Rojos",
+        price: "Consultar",
+        image: "/img/postres/chesscake-frutos-rojos/chesscake-frutos-rojos.webp",
+        images: [
+          "/img/postres/chesscake-frutos-rojos/chesscake-frutos-rojos.webp"
+        ],
+        description: "Delicioso cheesecake con salsa de frutos rojos artesanales.",
+      },
       // {
       //   id: "p-1",
       //   name: "Brownie con Helado",
