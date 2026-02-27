@@ -20,7 +20,7 @@ export const menuData: Category[] = [
     products: [
       {
         id: "t-1",
-        name: "María Luisa",
+        name: "Torta María Luisa",
         price: "Porción $9.000",
         image: "/img/tortas/maria-luisa/marialuisa-1.webp",
         images: [
@@ -32,7 +32,7 @@ export const menuData: Category[] = [
       },
       {
         id: "t-2",
-        name: "Milky Way",
+        name: "Torta Milky Way",
         price: "Porción $9.000",
         image: "/img/tortas/milky-way/milkyway-1.webp",
         images: [
