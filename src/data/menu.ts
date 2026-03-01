@@ -336,6 +336,21 @@ export const menuData: Category[] = [
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
+      {
+        id: "t-24",
+        name: "Torta Personalizada # 14",
+        price: "Consultar",
+        image: "/img/tortas/torta-personalizada-14/t-14-1.webp",
+        images: [
+          "/img/tortas/torta-personalizada-14/t-14-1.webp",
+          "/img/tortas/torta-personalizada-14/t-14-2.webp",
+          "/img/tortas/torta-personalizada-14/t-14-3.webp",
+          "/img/tortas/torta-personalizada-14/t-14-4.webp",
+          "/img/tortas/torta-personalizada-14/t-14-5.webp",
+          "/img/tortas/torta-personalizada-14/t-14-6.webp"
+        ],
+        description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
+      },
     ],
   },
   {

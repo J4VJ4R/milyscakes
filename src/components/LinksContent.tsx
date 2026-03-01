@@ -7,7 +7,7 @@ export default function LinksContent() {
   const links = [
     {
       name: "Sitio Web Oficial",
-      url: "/",
+      url: "https://www.milyscake.com/",
       icon: <Globe className="w-6 h-6" />,
       color: "bg-mily-purple hover:bg-mily-purple-dark",
       textColor: "text-white",
@@ -39,7 +39,7 @@ export default function LinksContent() {
     },
     {
       name: "Facebook",
-      url: "https://www.facebook.com/milyscakes",
+      url: "https://www.facebook.com/profile.php?id=61587649611714",
       icon: <Facebook className="w-6 h-6" />,
       color: "bg-blue-600 hover:bg-blue-700",
       textColor: "text-white",
