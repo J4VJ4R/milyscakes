@@ -14,6 +14,7 @@ const CatalogButton = () => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [progress, setProgress] = useState(0);
   const [pdfError, setPdfError] = useState<string | null>(null);
+  const [imageObjectUrls, setImageObjectUrls] = useState<string[]>([]);
 
   useEffect(() => {
     setIsClient(true);
@@ -34,6 +35,13 @@ const CatalogButton = () => {
     setPdfError(null);
     setIsGeneratingPdf(true);
     try {
+      let openedTab: Window | null = null;
+      try {
+        openedTab = window.open("", "_blank");
+      } catch {
+        openedTab = null;
+      }
+
       const blob = await pdf(pdfDocument).toBlob();
       const file = new File([blob], pdfFileName, { type: "application/pdf" });
 
@@ -48,19 +56,32 @@ const CatalogButton = () => {
           title: "Catálogo Mily's Cakes",
           files: [file],
         });
+        imageObjectUrls.forEach((u) => URL.revokeObjectURL(u));
+        setImageObjectUrls([]);
         return;
       }
 
       const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = pdfFileName;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      if (openedTab && !openedTab.closed) {
+        openedTab.location.href = url;
+      } else {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = pdfFileName;
+        a.rel = "noopener noreferrer";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        if (!a.download) {
+          window.location.href = url;
+        }
+      }
+
       window.setTimeout(() => URL.revokeObjectURL(url), 30_000);
+      window.setTimeout(() => {
+        imageObjectUrls.forEach((u) => URL.revokeObjectURL(u));
+        setImageObjectUrls([]);
+      }, 35_000);
     } catch (e) {
       console.error("PDF Generation Error:", e);
       setPdfError("No se pudo generar el PDF. Intenta de nuevo.");
@@ -69,7 +90,7 @@ const CatalogButton = () => {
     }
   };
 
-  const convertImageToBase64 = (url: string): Promise<string> => {
+  const convertImageToObjectUrl = (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       // Only set crossOrigin if not same origin, though for local dev it's usually fine either way.
@@ -110,8 +131,19 @@ const CatalogButton = () => {
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(img, 0, 0, width, height);
-          // Use JPEG with 0.6 quality for photos - significantly smaller than PNG
-          resolve(canvas.toDataURL("image/jpeg", 0.6));
+          canvas.toBlob(
+            (blob) => {
+              if (!blob) {
+                resolve("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=");
+                return;
+              }
+              const objectUrl = URL.createObjectURL(blob);
+              setImageObjectUrls((prev) => prev.concat(objectUrl));
+              resolve(objectUrl);
+            },
+            "image/jpeg",
+            0.6
+          );
         } else {
           reject(new Error("Canvas context failed"));
         }
@@ -150,8 +182,8 @@ const CatalogButton = () => {
             // Yield to main thread to keep UI responsive
             await new Promise(resolve => setTimeout(resolve, 10));
             
-            const base64 = await convertImageToBase64(fullUrl);
-            product.image = base64;
+            const imgUrl = await convertImageToObjectUrl(fullUrl);
+            product.image = imgUrl;
           } catch (e) {
             console.error("Error converting image", e);
           }
