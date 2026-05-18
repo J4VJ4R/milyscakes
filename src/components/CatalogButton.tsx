@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { pdf } from "@react-pdf/renderer";
 import CatalogDocument from "./CatalogDocument";
 import { Download, FileText, Loader2 } from "lucide-react";
 import { menuData, Category } from "@/data/menu";
@@ -11,7 +11,9 @@ const CatalogButton = () => {
   const [origin, setOrigin] = useState("");
   const [processedMenuData, setProcessedMenuData] = useState<Category[] | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [pdfError, setPdfError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -26,6 +28,46 @@ const CatalogButton = () => {
   const pdfDocument = useMemo(() => {
     return <CatalogDocument origin={origin} data={processedMenuData ?? undefined} />;
   }, [origin, processedMenuData]);
+
+  const downloadOrSharePdf = async () => {
+    if (!processedMenuData || isProcessing || isGeneratingPdf) return;
+    setPdfError(null);
+    setIsGeneratingPdf(true);
+    try {
+      const blob = await pdf(pdfDocument).toBlob();
+      const file = new File([blob], pdfFileName, { type: "application/pdf" });
+
+      const canShareFiles =
+        typeof navigator !== "undefined" &&
+        "canShare" in navigator &&
+        typeof (navigator as unknown as { canShare?: (data: unknown) => boolean }).canShare === "function" &&
+        (navigator as unknown as { canShare: (data: unknown) => boolean }).canShare({ files: [file] });
+
+      if (canShareFiles && typeof navigator.share === "function") {
+        await navigator.share({
+          title: "Catálogo Mily's Cakes",
+          files: [file],
+        });
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = pdfFileName;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 30_000);
+    } catch (e) {
+      console.error("PDF Generation Error:", e);
+      setPdfError("No se pudo generar el PDF. Intenta de nuevo.");
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   const convertImageToBase64 = (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -165,26 +207,17 @@ const CatalogButton = () => {
           )}
         </button>
       ) : (
-        <PDFDownloadLink
-          document={pdfDocument}
-          fileName={pdfFileName}
-          className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 neon-border group"
-        >
-          {({ loading, error }) => {
-            if (error) {
-              console.error("PDF Generation Error:", error);
-              // Reset state on error so user can try again
-              // setTimeout(() => {
-              //   setProcessedMenuData(null);
-              //   setIsProcessing(false);
-              //   setProgress(0);
-              // }, 3000);
-              return <span>Error al generar (Intentar de nuevo)</span>;
-            }
-            return loading ? (
+        <div className="flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={downloadOrSharePdf}
+            disabled={isGeneratingPdf}
+            className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 neon-border group disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {isGeneratingPdf ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Finalizando PDF...</span>
+                <span>Generando PDF...</span>
               </>
             ) : (
               <>
@@ -193,9 +226,10 @@ const CatalogButton = () => {
                 </svg>
                 <span>Descargar Catálogo</span>
               </>
-            );
-          }}
-        </PDFDownloadLink>
+            )}
+          </button>
+          {pdfError ? <span className="text-xs text-red-600">{pdfError}</span> : null}
+        </div>
       )}
     </div>
   );
