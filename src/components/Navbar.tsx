@@ -4,6 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const CatalogButton = dynamic(() => import("./CatalogButton"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +40,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             <Link href="/" className="text-gray-700 hover:text-mily-purple transition-colors font-medium">
               Inicio
             </Link>
@@ -69,6 +75,8 @@ export default function Navbar() {
               Redes
             </Link>
 
+            <CatalogButton />
+
             <a
               href="https://wa.me/573134583730"
               target="_blank"
@@ -95,6 +103,9 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
           <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="px-3 py-2 flex justify-center">
+              <CatalogButton />
+            </div>
             <Link
               href="/"
               className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mily-purple hover:bg-gray-50"

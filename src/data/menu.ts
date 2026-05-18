@@ -22,11 +22,11 @@ export const menuData: Category[] = [
         id: "t-1",
         name: "Torta María Luisa",
         price: "Porción $9.000",
-        image: "/img/tortas/maria-luisa/marialuisa-1.webp",
+        image: "/img/tortas/maria-luisa/t-1-1.webp",
         images: [
-          "/img/tortas/maria-luisa/marialuisa-1.webp",
-          "/img/tortas/maria-luisa/marialuisa-2.webp",
-          "/img/tortas/maria-luisa/marialuisa-3.webp"
+          "/img/tortas/maria-luisa/t-1-1.webp",
+          "/img/tortas/maria-luisa/t-1-2.webp",
+          "/img/tortas/maria-luisa/t-1-3.webp"
         ],
         description: "Clásica torta suave rellena de arequipe o mermelada.",
       },
@@ -346,8 +346,7 @@ export const menuData: Category[] = [
           "/img/tortas/torta-personalizada-14/t-14-2.webp",
           "/img/tortas/torta-personalizada-14/t-14-3.webp",
           "/img/tortas/torta-personalizada-14/t-14-4.webp",
-          "/img/tortas/torta-personalizada-14/t-14-5.webp",
-          "/img/tortas/torta-personalizada-14/t-14-6.webp"
+          "/img/tortas/torta-personalizada-14/t-14-5.webp"
         ],
         description: "Diseño único y sabor exquisito para tus celebraciones más especiales.",
       },
