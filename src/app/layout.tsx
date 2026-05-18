@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.milyscake.com";
+const siteUrl = rawSiteUrl.replace(/\/$/, "");
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,7 +40,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Mily's Cakes" }],
   creator: "Mily's Cakes",
   publisher: "Mily's Cakes",
-  metadataBase: new URL("https://milyscakes.vercel.app"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -46,13 +52,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MilysCakes | Pastelería Artesanal en Ibagué",
     description: "Dulces que cuentan historias. Pide tus tortas y postres favoritos a domicilio en Ibagué.",
-    url: "https://milyscakes.vercel.app",
+    url: siteUrl,
     siteName: "Mily's Cakes",
     images: [
       {
-        url: "/img/favicon.ico",
-        width: 256,
-        height: 256,
+        url: "/img/logo-horizontal-1.png",
+        width: 1200,
+        height: 630,
         alt: "Mily's Cakes - Pastelería Artesanal",
       },
     ],
@@ -63,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MilysCakes | Pastelería Artesanal en Ibagué",
     description: "Dulces que cuentan historias. Pide tus tortas y postres favoritos a domicilio en Ibagué.",
-    images: ["/img/favicon.ico"],
+    images: ["/img/logo-horizontal-1.png"],
   },
   robots: {
     index: true,
@@ -77,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/img/favicon.ico',
+    icon: "/favicon.ico",
   },
 };
 
@@ -88,56 +94,74 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Bakery",
-    "name": "Mily's Cakes",
-    "image": [
-      "https://milyscakes.vercel.app/img/favicon.ico"
-    ],
-    "description": "Pastelería artesanal en Ibagué ofreciendo tortas, postres, bebidas calientes y frías. Especialidad en Red Velvet y Cheesecake.",
-    "url": "https://milyscakes.vercel.app",
-    "telephone": "+573134583730",
-    "servesCuisine": "Pastelería, Repostería, Cafetería",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ibagué",
-      "addressRegion": "Tolima",
-      "addressCountry": "CO",
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 4.4389,
-      "longitude": -75.2322
-    },
-    "openingHoursSpecification": [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "09:00",
-        "closes": "22:00",
+        "@type": "Bakery",
+        "@id": `${siteUrl}/#bakery`,
+        "name": "Mily's Cakes",
+        "url": siteUrl,
+        "logo": `${siteUrl}/img/logo-horizontal-1.png`,
+        "image": [`${siteUrl}/img/logo-horizontal-1.png`],
+        "description": "Pastelería artesanal en Ibagué ofreciendo tortas, postres, bebidas calientes y frías. Especialidad en Red Velvet y Cheesecake.",
+        "telephone": "+573134583730",
+        "servesCuisine": "Pastelería, Repostería, Cafetería",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Ibagué, Tolima, Colombia"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ibagué",
+          "addressRegion": "Tolima",
+          "addressCountry": "CO"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 4.4389,
+          "longitude": -75.2322
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "09:00",
+            "closes": "22:00"
+          }
+        ],
+        "priceRange": "$$",
+        "paymentAccepted": "Cash, Credit Card, Transferencia Bancaria, Nequi, Daviplata",
+        "currenciesAccepted": "COP",
+        "sameAs": [
+          "https://www.instagram.com/milyscakes27/",
+          "https://www.facebook.com/milyscakes",
+          "https://www.tiktok.com/@milyscakes0?lang=es-419"
+        ],
+        "potentialAction": {
+          "@type": "OrderAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://wa.me/573134583730",
+            "inLanguage": "es",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/IOSPlatform",
+              "http://schema.org/AndroidPlatform"
+            ]
+          },
+          "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
+        }
       },
-    ],
-    "priceRange": "$$",
-    "paymentAccepted": "Cash, Credit Card, Transferencia Bancaria, Nequi, Daviplata",
-    "currenciesAccepted": "COP",
-    "sameAs": [
-      "https://www.instagram.com/milyscakes27/",
-      "https://www.facebook.com/milyscakes",
-      "https://www.tiktok.com/@milyscakes0?lang=es-419"
-    ],
-    "potentialAction": {
-      "@type": "OrderAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://wa.me/573134583730",
-        "inLanguage": "es",
-        "actionPlatform": [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/IOSPlatform",
-          "http://schema.org/AndroidPlatform"
-        ]
-      },
-      "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
-    }
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "url": siteUrl,
+        "name": "Mily's Cakes",
+        "inLanguage": "es-CO",
+        "publisher": {
+          "@id": `${siteUrl}/#bakery`
+        }
+      }
+    ]
   };
 
   return (

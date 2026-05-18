@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.milyscake.com').replace(/\/$/, '');
+
   return {
     rules: [
       {
@@ -13,6 +15,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://milyscakes.com/sitemap.xml',
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
