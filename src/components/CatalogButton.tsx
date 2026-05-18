@@ -14,7 +14,7 @@ const CatalogButton = () => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [progress, setProgress] = useState(0);
   const [pdfError, setPdfError] = useState<string | null>(null);
-  const [imageObjectUrls, setImageObjectUrls] = useState<string[]>([]);
+  const [pdfObjectUrl, setPdfObjectUrl] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -30,6 +30,12 @@ const CatalogButton = () => {
     return <CatalogDocument origin={origin} data={processedMenuData ?? undefined} />;
   }, [origin, processedMenuData]);
 
+  useEffect(() => {
+    return () => {
+      if (pdfObjectUrl) URL.revokeObjectURL(pdfObjectUrl);
+    };
+  }, [pdfObjectUrl]);
+
   const downloadOrSharePdf = async () => {
     if (!processedMenuData || isProcessing || isGeneratingPdf) return;
     setPdfError(null);
@@ -37,51 +43,39 @@ const CatalogButton = () => {
     try {
       let openedTab: Window | null = null;
       try {
-        openedTab = window.open("", "_blank");
+        openedTab = window.open("about:blank", "_blank");
       } catch {
         openedTab = null;
+      }
+
+      if (pdfObjectUrl) {
+        URL.revokeObjectURL(pdfObjectUrl);
+        setPdfObjectUrl(null);
       }
 
       const blob = await pdf(pdfDocument).toBlob();
       const file = new File([blob], pdfFileName, { type: "application/pdf" });
 
-      const canShareFiles =
-        typeof navigator !== "undefined" &&
-        "canShare" in navigator &&
-        typeof (navigator as unknown as { canShare?: (data: unknown) => boolean }).canShare === "function" &&
-        (navigator as unknown as { canShare: (data: unknown) => boolean }).canShare({ files: [file] });
-
-      if (canShareFiles && typeof navigator.share === "function") {
-        await navigator.share({
-          title: "Catálogo Mily's Cakes",
-          files: [file],
-        });
-        imageObjectUrls.forEach((u) => URL.revokeObjectURL(u));
-        setImageObjectUrls([]);
-        return;
-      }
-
-      const url = URL.createObjectURL(blob);
-      if (openedTab && !openedTab.closed) {
-        openedTab.location.href = url;
-      } else {
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = pdfFileName;
-        a.rel = "noopener noreferrer";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        if (!a.download) {
-          window.location.href = url;
+      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+        try {
+          await navigator.share({
+            title: "Catálogo Mily's Cakes",
+            files: [file],
+          });
+          return;
+        } catch {
+          // Fall back to opening the PDF if share is cancelled or not supported for files
         }
       }
 
-      window.setTimeout(() => URL.revokeObjectURL(url), 30_000);
-      window.setTimeout(() => {
-        imageObjectUrls.forEach((u) => URL.revokeObjectURL(u));
-        setImageObjectUrls([]);
-      }, 35_000);
+      const url = URL.createObjectURL(blob);
+      setPdfObjectUrl(url);
+
+      if (openedTab && !openedTab.closed) {
+        openedTab.location.href = url;
+      } else {
+        window.location.href = url;
+      }
     } catch (e) {
       console.error("PDF Generation Error:", e);
       setPdfError("No se pudo generar el PDF. Intenta de nuevo.");
@@ -90,7 +84,7 @@ const CatalogButton = () => {
     }
   };
 
-  const convertImageToObjectUrl = (url: string): Promise<string> => {
+  const convertImageToBase64 = (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       // Only set crossOrigin if not same origin, though for local dev it's usually fine either way.
@@ -131,19 +125,7 @@ const CatalogButton = () => {
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(img, 0, 0, width, height);
-          canvas.toBlob(
-            (blob) => {
-              if (!blob) {
-                resolve("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=");
-                return;
-              }
-              const objectUrl = URL.createObjectURL(blob);
-              setImageObjectUrls((prev) => prev.concat(objectUrl));
-              resolve(objectUrl);
-            },
-            "image/jpeg",
-            0.6
-          );
+          resolve(canvas.toDataURL("image/jpeg", 0.6));
         } else {
           reject(new Error("Canvas context failed"));
         }
@@ -182,8 +164,8 @@ const CatalogButton = () => {
             // Yield to main thread to keep UI responsive
             await new Promise(resolve => setTimeout(resolve, 10));
             
-            const imgUrl = await convertImageToObjectUrl(fullUrl);
-            product.image = imgUrl;
+            const base64 = await convertImageToBase64(fullUrl);
+            product.image = base64;
           } catch (e) {
             console.error("Error converting image", e);
           }
@@ -261,6 +243,16 @@ const CatalogButton = () => {
             )}
           </button>
           {pdfError ? <span className="text-xs text-red-600">{pdfError}</span> : null}
+          {pdfObjectUrl ? (
+            <a
+              href={pdfObjectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-mily-purple underline"
+            >
+              Abrir PDF si no descarga
+            </a>
+          ) : null}
         </div>
       )}
     </div>
