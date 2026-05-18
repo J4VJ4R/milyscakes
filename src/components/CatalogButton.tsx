@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { pdf } from "@react-pdf/renderer";
 import CatalogDocument from "./CatalogDocument";
 import { Download, FileText, Loader2 } from "lucide-react";
@@ -15,6 +15,7 @@ const CatalogButton = () => {
   const [progress, setProgress] = useState(0);
   const [pdfError, setPdfError] = useState<string | null>(null);
   const [pdfObjectUrl, setPdfObjectUrl] = useState<string | null>(null);
+  const lastTapMsRef = useRef(0);
 
   useEffect(() => {
     setIsClient(true);
@@ -191,7 +192,7 @@ const CatalogButton = () => {
   return (
     <div className="relative group">
       {/* Abstract background decorative element for asymmetry */}
-      <div className="absolute -top-1 -right-1 w-full h-full bg-mily-purple rounded-xl opacity-20 transform rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+      <div className="absolute -top-1 -right-1 w-full h-full bg-mily-purple rounded-xl opacity-20 transform rotate-2 group-hover:rotate-6 transition-transform duration-300 pointer-events-none"></div>
       
       {!processedMenuData ? (
         <button 
@@ -225,8 +226,21 @@ const CatalogButton = () => {
           <button
             type="button"
             onClick={downloadOrSharePdf}
+            onPointerUp={() => {
+              const now = Date.now();
+              if (now - lastTapMsRef.current < 800) return;
+              lastTapMsRef.current = now;
+              void downloadOrSharePdf();
+            }}
+            onTouchEnd={() => {
+              const now = Date.now();
+              if (now - lastTapMsRef.current < 800) return;
+              lastTapMsRef.current = now;
+              void downloadOrSharePdf();
+            }}
             disabled={isGeneratingPdf}
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 neon-border group disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{ touchAction: "manipulation" }}
+            className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 neon-border group disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {isGeneratingPdf ? (
               <>
