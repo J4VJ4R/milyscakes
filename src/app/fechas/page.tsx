@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
 import DateLabelsPDF from "@/components/DateLabelsPDF";
 import html2canvas from "html2canvas";
 
@@ -61,7 +62,9 @@ export default function FechasPage() {
   };
 
   return (
-    <main className="min-h-screen py-20">
+    <main className="min-h-screen">
+      <Navbar />
+      <div className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl md:text-5xl font-dancing-script text-mily-purple mb-8 text-center">
           Generador de Etiquetas de Fechas
@@ -179,6 +182,7 @@ export default function FechasPage() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </main>
   );
