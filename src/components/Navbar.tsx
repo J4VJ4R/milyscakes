@@ -14,9 +14,11 @@ const CatalogButton = dynamic(() => import("./CatalogButton"), {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleSubMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleToolsMenu = () => setIsToolsOpen(!isToolsOpen);
 
   const menuItems = [
     { name: "Tortas", href: "#tortas" },
@@ -64,6 +66,21 @@ export default function Navbar() {
                     {item.name}
                   </Link>
                 ))}
+              </div>
+            </div>
+
+            <div className="relative group">
+              <button className="flex items-center text-gray-700 hover:text-mily-purple transition-colors font-medium px-3 py-2 rounded-md neon-border-btn">
+                Herramientas <ChevronDown className="ml-1 w-4 h-4" />
+              </button>
+              {/* Dropdown */}
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                <Link
+                  href="/fechas"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-mily-purple-light hover:text-mily-purple-dark"
+                >
+                  Fechas
+                </Link>
               </div>
             </div>
 
@@ -141,6 +158,26 @@ export default function Navbar() {
                       {item.name}
                     </Link>
                   ))}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <button
+                onClick={toggleToolsMenu}
+                className="w-full flex justify-between items-center px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mily-purple hover:bg-gray-50"
+              >
+                Herramientas <ChevronDown className={`w-4 h-4 transform transition-transform ${isToolsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isToolsOpen && (
+                <div className="pl-6 space-y-1 bg-gray-50 rounded-md mt-1">
+                  <Link
+                    href="/fechas"
+                    className="block px-3 py-2 text-sm text-gray-600 hover:text-mily-purple"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Fechas
+                  </Link>
                 </div>
               )}
             </div>
