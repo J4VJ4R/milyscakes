@@ -13,25 +13,26 @@ const PDFDownloadLink = dynamic(
 );
 
 export default function FechasPage() {
-  // Today's date in YYYY-MM-DD format
-  const today = new Date().toISOString().split("T")[0];
+  // Today's date in YYYY-MM-DD format (local time, avoiding timezone issues)
+  const todayDate = new Date();
+  const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, "0")}-${String(todayDate.getDate()).padStart(2, "0")}`;
   const [ffDate, setFfDate] = useState(today);
   const [fvDate, setFvDate] = useState(today);
   const [columns, setColumns] = useState(12);
   const [rows, setRows] = useState(6);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  // Parse FF date for display
+  // Parse FF date for display (using UTC to avoid timezone issues)
   const ffDateObj = new Date(ffDate);
-  const ffDay = String(ffDateObj.getDate()).padStart(2, "0");
-  const ffMonth = String(ffDateObj.getMonth() + 1).padStart(2, "0");
-  const ffYear = String(ffDateObj.getFullYear()).slice(-2);
+  const ffDay = String(ffDateObj.getUTCDate()).padStart(2, "0");
+  const ffMonth = String(ffDateObj.getUTCMonth() + 1).padStart(2, "0");
+  const ffYear = String(ffDateObj.getUTCFullYear()).slice(-2);
 
-  // Parse FV date for display
+  // Parse FV date for display (using UTC to avoid timezone issues)
   const fvDateObj = new Date(fvDate);
-  const fvDay = String(fvDateObj.getDate()).padStart(2, "0");
-  const fvMonth = String(fvDateObj.getMonth() + 1).padStart(2, "0");
-  const fvYear = String(fvDateObj.getFullYear()).slice(-2);
+  const fvDay = String(fvDateObj.getUTCDate()).padStart(2, "0");
+  const fvMonth = String(fvDateObj.getUTCMonth() + 1).padStart(2, "0");
+  const fvYear = String(fvDateObj.getUTCFullYear()).slice(-2);
 
   const totalLabels = columns * rows;
   const labels = Array(totalLabels).fill(null);

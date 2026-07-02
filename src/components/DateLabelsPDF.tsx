@@ -46,17 +46,17 @@ const styles = StyleSheet.create({
 });
 
 const DateLabelsPDF: React.FC<DateLabelsPDFProps> = ({ ffDate, fvDate, columns, rows }) => {
-  // Parse FF date
+  // Parse FF date (using UTC to avoid timezone issues)
   const ffDateObj = new Date(ffDate);
-  const ffDay = String(ffDateObj.getDate()).padStart(2, '0');
-  const ffMonth = String(ffDateObj.getMonth() + 1).padStart(2, '0');
-  const ffYear = String(ffDateObj.getFullYear()).slice(-2); // Last 2 digits
+  const ffDay = String(ffDateObj.getUTCDate()).padStart(2, '0');
+  const ffMonth = String(ffDateObj.getUTCMonth() + 1).padStart(2, '0');
+  const ffYear = String(ffDateObj.getUTCFullYear()).slice(-2); // Last 2 digits
 
-  // Parse FV date
+  // Parse FV date (using UTC to avoid timezone issues)
   const fvDateObj = new Date(fvDate);
-  const fvDay = String(fvDateObj.getDate()).padStart(2, '0');
-  const fvMonth = String(fvDateObj.getMonth() + 1).padStart(2, '0');
-  const fvYear = String(fvDateObj.getFullYear()).slice(-2); // Last 2 digits
+  const fvDay = String(fvDateObj.getUTCDate()).padStart(2, '0');
+  const fvMonth = String(fvDateObj.getUTCMonth() + 1).padStart(2, '0');
+  const fvYear = String(fvDateObj.getUTCFullYear()).slice(-2); // Last 2 digits
 
   const labels = [];
   const totalLabels = columns * rows;
