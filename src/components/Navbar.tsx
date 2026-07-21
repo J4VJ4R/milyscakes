@@ -81,6 +81,12 @@ export default function Navbar() {
                 >
                   Fechas
                 </Link>
+                <Link
+                  href="/menu"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-mily-purple-light hover:text-mily-purple-dark"
+                >
+                  QR Menu
+                </Link>
               </div>
             </div>
 
@@ -180,6 +186,13 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                   >
                     Fechas
+                  </Link>
+                  <Link
+                    href="/menu"
+                    className="block px-3 py-2 text-sm text-gray-600 hover:text-mily-purple"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    QR Menu
                   </Link>
                 </div>
               )}
