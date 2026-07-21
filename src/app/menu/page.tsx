@@ -6,7 +6,7 @@ import { Download } from "lucide-react";
 
 export default function MenuPage() {
   const qrRef = useRef<HTMLDivElement>(null);
-  const downloadPath = "/descargar-menu";
+  const downloadPath = "/menu/descarga";
   const [url, setUrl] = useState("");
 
   useEffect(() => {
